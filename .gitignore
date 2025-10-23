@@ -1,0 +1,11 @@
+# ide
+.idea
+
+# python virtual environment
+venv/
+env/
+
+# python artifacts
+build/
+dist/
+GeodataValidator.egg-info
