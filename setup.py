@@ -1,7 +1,10 @@
 from setuptools import find_packages, setup
 
-with open("README.md", "r") as fh:
+with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
+
+with open("requirements.txt", "r", encoding="utf-8") as fh:
+    requirements = fh.read().splitlines()
 
 setup(
     name='GeodataValidator',
@@ -15,7 +18,7 @@ setup(
     packages=find_packages(),
     test_suite='tests',
     python_requires='>=3.6',
-    install_requires=read('requirements.txt').splitlines(),
+    install_requires=requirements,
     tests_require=['pytest'],
     classifiers=[
         'Development Status :: 3 - Alpha',
