@@ -14,11 +14,11 @@ class GeoJsonUtils:
         geojson_obj = geojson.loads(geojson_dumps)
         return geojson_obj
 
-    def feature_collection_from_geojson_obj(self, geojson_obj: dict) -> FeatureCollection:
+    def feature_collection_from_geojson_obj(self, geojson_obj: dict) -> geojson.FeatureCollection:
         feature_collection = geojson.FeatureCollection(geojson_obj)
         return feature_collection
 
-    def feature_collection_isvalid(self, feature_collection: FeatureCollection) -> bool:
+    def feature_collection_isvalid(self, feature_collection: geojson.FeatureCollection) -> bool:
         return feature_collection.is_valid
 
     def validate_geojson_geometry(self, geojson_dict: dict) -> bool:
