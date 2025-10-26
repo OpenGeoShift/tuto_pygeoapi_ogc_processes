@@ -1,7 +1,8 @@
 import logging
+import traceback
 
 from pygeoapi.process.base import BaseProcessor, ProcessorExecuteError
-
+from . import validate_geojson_geometry
 
 LOGGER = logging.getLogger(__name__)
 
@@ -78,9 +79,19 @@ class GeoJsonGeometryValidatorProcessor(BaseProcessor):
         if geojson is None:
             raise ProcessorExecuteError('Cannot process without a geojson')
 
-        # TODO : something
+        try:
+            is_geometry_valid = validate_geojson_geometry.validate_geojson_geometry(geojson)
+            outputs = {"is_geometry_valid":is_geometry_valid}
 
-        outputs = {"is_geometry_valid":True}
+        except Exception as err:
+
+            err_name = {type(err).__name__}
+            err_message = repr(err)
+            traceback_info = traceback.format_exc()
+
+            LOGGER.error(f"{err_name} - {err_message} - {traceback_info}")
+            outputs = {"error": {err_name}, "message":{err_message}}
+
         return mimetype, outputs
 
     def __repr__(self):
