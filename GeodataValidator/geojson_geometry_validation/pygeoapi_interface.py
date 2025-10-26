@@ -73,7 +73,7 @@ class GeoJsonGeometryValidatorProcessor(BaseProcessor):
 
     def execute(self, data, outputs=None):
         mimetype = 'application/json'
-        geojson = data.get('name')
+        geojson = data.get('geojson')
 
         if geojson is None:
             raise ProcessorExecuteError('Cannot process without a geojson')
