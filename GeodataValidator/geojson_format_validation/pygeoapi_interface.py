@@ -90,7 +90,7 @@ class GeoJsonFormatValidatorProcessor(BaseProcessor):
             traceback_info = repr(traceback.format_exc())
 
             LOGGER.error(f"{err_name} - {err_message} - {traceback_info}")
-            raise ProcessorExecuteError(f'{err_name} - {err_message}')
+            raise ProcessorGenericError(f'{err_name} - {err_message}')
 
         return mimetype, outputs
 
