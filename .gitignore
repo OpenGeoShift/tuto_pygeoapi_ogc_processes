@@ -1,6 +1,9 @@
 # ide
 .idea
 
+# from unit tests
+__pycache__/
+
 # python virtual environment
 venv/
 env/
