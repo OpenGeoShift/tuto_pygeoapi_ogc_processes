@@ -1,7 +1,7 @@
 import logging
 import traceback
 
-from pygeoapi.process.base import BaseProcessor, ProcessorExecuteError
+from pygeoapi.process.base import BaseProcessor, ProcessorExecuteError, ProcessorGenericError
 from . import validate_geojson_format
 
 LOGGER = logging.getLogger(__name__)
