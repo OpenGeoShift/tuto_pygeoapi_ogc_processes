@@ -1,8 +1,13 @@
+import logging
 import geojson
 import shapely
-import logging
+from shapely.geometry import shape
+from shapely.validation import explain_validity
 
 LOGGER = logging.getLogger(__name__)
+
+class GeometryError(Exception):
+    pass
 
 class GeoJsonUtils:
 
@@ -24,9 +29,8 @@ class GeoJsonUtils:
     def validate_geojson_geometry(self, geojson_dict: dict) -> bool:
         is_valid = True
         for feature in geojson_dict['features']:
-            geom = shapely.geometry.shape(feature['geometry'])
+            geom = shape(feature['geometry'])
             is_valid = bool(shapely.is_valid(geom))
             if is_valid == False:
-                LOGGER.warning(shapely.validation.explain_validity(geom))
-                break
+                raise GeometryError(explain_validity(geom))
         return is_valid
