@@ -24,7 +24,7 @@ class GeoJsonUtils:
     def validate_geojson_geometry(self, geojson_dict: dict) -> bool:
         is_valid = True
         for feature in geojson_dict['features']:
-            geom = shape(feature['geometry'])
+            geom = shapely.geometry.shape(feature['geometry'])
             is_valid = bool(shapely.is_valid(geom))
             if is_valid == False:
                 LOGGER.warning(shapely.validation.explain_validity(geom))
