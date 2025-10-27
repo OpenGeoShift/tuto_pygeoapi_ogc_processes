@@ -1,5 +1,5 @@
 from pygeoapi.process.base import BaseProcessor, ProcessorExecuteError
-from . import validate_geojson_format
+from GeodataValidator import main
 
 #: Process metadata and description
 PROCESS_METADATA = {
@@ -36,7 +36,7 @@ PROCESS_METADATA = {
         }
     },
     'outputs': {
-        'is_format_valid': {
+        'is_valid': {
             'title': 'Is geojson format valid',
             'description': 'Is the geojson format provided valid',
             'schema': {
@@ -75,8 +75,8 @@ class GeoJsonFormatValidatorProcessor(BaseProcessor):
             raise ProcessorExecuteError('Cannot process without a geojson')
 
         try:
-            is_format_valid = validate_geojson_format.validate_geojson_format(geojson)
-            outputs = {"is_format_valid": is_format_valid}
+            is_valid = main.validate_geojson_format(geojson)
+            outputs = {"is_valid": is_valid}
 
         except Exception:
             raise
