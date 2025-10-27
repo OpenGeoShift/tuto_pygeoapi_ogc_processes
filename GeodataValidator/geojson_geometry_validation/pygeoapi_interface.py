@@ -1,10 +1,5 @@
-import logging
-import traceback
-
 from pygeoapi.process.base import BaseProcessor, ProcessorExecuteError
 from . import validate_geojson_geometry
-
-LOGGER = logging.getLogger(__name__)
 
 #: Process metadata and description
 PROCESS_METADATA = {
