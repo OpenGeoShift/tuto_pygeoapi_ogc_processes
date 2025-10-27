@@ -8,6 +8,6 @@ def validate_geojson_geometry(geojson_dict: dict)->bool:
     """
     Convert a geojson dict to a geojson object using geojson package and validate it.
     """
-    LOGGER('Validating GeoJSON Geometry')
+    LOGGER.info('Validating GeoJSON Geometry')
     gjutils = GeoJsonUtils()
     return gjutils.validate_geojson_geometry(geojson_dict)
