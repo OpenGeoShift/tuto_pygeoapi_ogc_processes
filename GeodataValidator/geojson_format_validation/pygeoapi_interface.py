@@ -83,14 +83,7 @@ class GeoJsonFormatValidatorProcessor(BaseProcessor):
             is_format_valid = validate_geojson_format.validate_geojson_format(geojson)
             outputs = {"is_format_valid": is_format_valid}
 
-        except Exception as err:
-
-            err_name = {type(err).__name__}
-            err_message = repr(err)
-            traceback_info = repr(traceback.format_exc())
-
-            LOGGER.error(f"{err_name} - {err_message} - {traceback_info}")
-            #raise ProcessorExecuteError(f"{err_message}")
+        except Exception:
             raise
 
         return mimetype, outputs

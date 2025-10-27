@@ -83,15 +83,7 @@ class GeoJsonGeometryValidatorProcessor(BaseProcessor):
             is_geometry_valid = validate_geojson_geometry.validate_geojson_geometry(geojson)
             outputs = {"is_geometry_valid":is_geometry_valid}
 
-        except Exception as err:
-
-            err_name = {type(err).__name__}
-            err_message = repr(err)
-            traceback_info = traceback.format_exc()
-
-            LOGGER.error(f"{err_name} - {err_message} - {traceback_info}")
-
-            #raise ProcessorExecuteError(f'{err_name} - {err_message}')
+        except Exception:
             raise
 
         return mimetype, outputs
