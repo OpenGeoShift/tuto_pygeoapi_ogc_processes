@@ -1,7 +1,7 @@
 import logging
 import traceback
 
-from pygeoapi.process.base import BaseProcessor, ProcessorExecuteError, ProcessorGenericError
+from pygeoapi.process.base import BaseProcessor, ProcessorExecuteError
 from . import validate_geojson_format
 
 LOGGER = logging.getLogger(__name__)
@@ -90,7 +90,8 @@ class GeoJsonFormatValidatorProcessor(BaseProcessor):
             traceback_info = repr(traceback.format_exc())
 
             LOGGER.error(f"{err_name} - {err_message} - {traceback_info}")
-            raise ProcessorGenericError(f'{err_name} - {err_message}')
+            #raise ProcessorExecuteError(f"{err_message}")
+            raise
 
         return mimetype, outputs
 
