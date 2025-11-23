@@ -1,5 +1,8 @@
 from pygeoapi.process.base import BaseProcessor, ProcessorExecuteError
 from GeodataValidator import main
+import logging
+
+LOGGER = logging.getLogger(__name__)
 
 #: Process metadata and description
 PROCESS_METADATA = {
@@ -70,6 +73,8 @@ class GeoJsonFormatValidatorProcessor(BaseProcessor):
     def execute(self, data, outputs=None):
         mimetype = 'application/json'
         geojson = data.get('geojson')
+
+        LOGGER.info(self.job_id)
 
         if geojson is None:
             raise ProcessorExecuteError('Cannot process without a geojson')
