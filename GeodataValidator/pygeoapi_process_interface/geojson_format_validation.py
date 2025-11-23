@@ -1,8 +1,5 @@
 from pygeoapi.process.base import BaseProcessor, ProcessorExecuteError
 from GeodataValidator import main
-import logging
-
-LOGGER = logging.getLogger(__name__)
 
 #: Process metadata and description
 PROCESS_METADATA = {
