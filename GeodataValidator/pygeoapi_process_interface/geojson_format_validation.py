@@ -56,7 +56,7 @@ PROCESS_METADATA = {
 
 
 class GeoJsonFormatValidatorProcessor(BaseProcessor):
-    """Hello World Processor example"""
+    """Processor example"""
 
     def __init__(self, processor_def):
         """
@@ -73,8 +73,6 @@ class GeoJsonFormatValidatorProcessor(BaseProcessor):
     def execute(self, data, outputs=None):
         mimetype = 'application/json'
         geojson = data.get('geojson')
-
-        LOGGER.info(self.job_id)
 
         if geojson is None:
             raise ProcessorExecuteError('Cannot process without a geojson')

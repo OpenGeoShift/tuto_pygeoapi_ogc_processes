@@ -53,7 +53,7 @@ PROCESS_METADATA = {
 
 
 class GeoJsonGeometryValidatorProcessor(BaseProcessor):
-    """Hello World Processor example"""
+    """Processor example"""
 
     def __init__(self, processor_def):
         """
