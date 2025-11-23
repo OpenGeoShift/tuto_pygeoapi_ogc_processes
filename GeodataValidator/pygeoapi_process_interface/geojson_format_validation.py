@@ -9,8 +9,8 @@ PROCESS_METADATA = {
         'fr': 'geojson-format-validation'
     },
     'description': {
-        'en': 'Validate Geojson Format',
-        'fr': 'Validation Geojson Format',
+        'en': 'Validate geojson format',
+        'fr': 'Validation format geojson',
     },
     'jobControlOptions': ['sync-execute', 'async-execute'],
     'keywords': ['geojson', 'format', 'validation'],
