@@ -4,6 +4,7 @@ from GeodataValidator import main
 #: Process metadata and description
 PROCESS_METADATA = {
     'version': '0.2.0',
+    'id': 'geojson-format-validation',
     'title': {
         'en': 'geojson-format-validation',
         'fr': 'geojson-format-validation'
