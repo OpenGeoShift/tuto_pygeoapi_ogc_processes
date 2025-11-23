@@ -4,14 +4,13 @@ from GeodataValidator import main
 #: Process metadata and description
 PROCESS_METADATA = {
     'version': '0.2.0',
-    'id': 'geojson-geometry-validation',
     'title': {
-        'en': 'Geojson Geometry Validation',
-        'fr': 'Validation Geometry Geojson'
+        'en': 'geojson-geometry-validation',
+        'fr': 'geojson-geometry-validation'
     },
     'description': {
-        'en': 'Validate Geojson Geometry',
-        'fr': 'Valide Geojson Geometrie',
+        'en': 'Validate Geojson Geometries',
+        'fr': 'Validation Geojson Geometries',
     },
     'jobControlOptions': ['sync-execute', 'async-execute'],
     'keywords': ['geojson', 'geometry', 'validation'],

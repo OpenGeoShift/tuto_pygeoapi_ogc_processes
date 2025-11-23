@@ -5,12 +5,12 @@ from GeodataValidator import main
 PROCESS_METADATA = {
     'version': '0.2.0',
     'title': {
-        'en': 'Geojson Format Validation',
-        'fr': 'Validation Format Geojson'
+        'en': 'geojson-format-validation',
+        'fr': 'geojson-format-validation'
     },
     'description': {
         'en': 'Validate Geojson Format',
-        'fr': 'Valide Geojson Format',
+        'fr': 'Validation Geojson Format',
     },
     'jobControlOptions': ['sync-execute', 'async-execute'],
     'keywords': ['geojson', 'format', 'validation'],
