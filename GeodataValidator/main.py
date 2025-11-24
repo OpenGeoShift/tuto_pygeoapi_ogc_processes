@@ -3,30 +3,37 @@ import time
 
 from GeodataValidator.common.geojson_utils import GeoJsonUtils
 
+logging.basicConfig(level=logging.INFO)
 LOGGER = logging.getLogger(__name__)
+
 gjutils = GeoJsonUtils()
 
-def validate_geojson_format(geojson_dict: dict)->bool:
+def validate_geojson_format(geojson: dict)->bool:
     """
-    Convert a geojson dict to a geojson object using geojson package and validate it.
+    Validate geojson structure
     """
     LOGGER.info('Validating GeoJSON Format')
-    geojson_dumps = gjutils.dumps_geojson_dict(geojson_dict)
-    geojson_obj  = gjutils.geojson_obj_from_dumps(geojson_dumps)
-    feature_collection = gjutils.feature_collection_from_geojson_obj(geojson_obj)
     #time.sleep(10)
-    return gjutils.feature_collection_isvalid(feature_collection)
+    return gjutils.geojson_isvalid(geojson)
 
-def validate_geojson_geometry(geojson_dict: dict)->bool:
+def validate_geojson_geometry(geojson: dict)->bool:
     """
-    Convert a geojson dict to a geojson object using geojson package and validate it.
+    Validate geojson geometry
     """
     LOGGER.info('Validating GeoJSON Geometry')
     #time.sleep(10)
-    return gjutils.validate_geojson_geometry(geojson_dict)
+    return gjutils.validate_geojson_geometry(geojson)
 
 if __name__ == "__main__":
-    geojson_dict = {"features":[{"geometry":{"coordinates":[[[9.4001,4.1678],[9.4001,4.1562],[9.4117,4.1562],[9.4117,4.1677],[9.4001,4.1678]]],"type":"Polygon"},"properties":{},"type":"Feature"}],"type":"FeatureCollection"}
-    valid_format = validate_geojson_format(geojson_dict)
-    valid_geom = validate_geojson_geometry(geojson_dict)
-    LOGGER.info(f'valid_format: {valid_format} - valid_geom: {valid_geom}')
+
+    geojson = {"features":[{"geometry":{"coordinates":[[[9.4001,4.1678],[9.4001,4.1562],[9.4117,4.1562],[9.4117,4.1677],[9.4001,4.1678]]],"type":"Polygon"},"properties":{},"type":"Feature"}],"type":"FeatureCollection"}
+
+    geojson_validation_result = validate_geojson_format(geojson)
+    if geojson_validation_result:
+        raise Exception(geojson_validation_result)
+    LOGGER.info(f'format validated')
+
+    geometry_validation_result = validate_geojson_geometry(geojson)
+    if geometry_validation_result['invalid'] or geometry_validation_result['problematic']:
+        raise Exception(geometry_validation_result)
+    LOGGER.info(f'geometry validated')

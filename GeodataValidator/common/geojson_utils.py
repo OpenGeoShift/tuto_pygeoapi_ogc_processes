@@ -1,36 +1,18 @@
 import logging
-import geojson
+import geojson_validator
 import shapely
 from shapely.geometry import shape
 from shapely.validation import explain_validity
 
 LOGGER = logging.getLogger(__name__)
-
-class GeometryError(Exception):
-    pass
+geojson_validator.configure_logging(enabled=False)
 
 class GeoJsonUtils:
 
-    def dumps_geojson_dict(self, geojson_dict: dict) -> str:
-        geojson_dumps = geojson.dumps(geojson_dict)
-        return geojson_dumps
+    def geojson_isvalid(self, geojson: dict) -> bool:
+        validity_report = geojson_validator.validate_structure(geojson)
+        return validity_report
 
-    def geojson_obj_from_dumps(self, geojson_dumps: str) -> dict :
-        geojson_obj = geojson.loads(geojson_dumps)
-        return geojson_obj
-
-    def feature_collection_from_geojson_obj(self, geojson_obj: dict) -> geojson.FeatureCollection:
-        feature_collection = geojson.FeatureCollection(geojson_obj)
-        return feature_collection
-
-    def feature_collection_isvalid(self, feature_collection: geojson.FeatureCollection) -> bool:
-        return feature_collection.is_valid
-
-    def validate_geojson_geometry(self, geojson_dict: dict) -> bool:
-        is_valid = True
-        for feature in geojson_dict['features']:
-            geom = shape(feature['geometry'])
-            is_valid = bool(shapely.is_valid(geom))
-            if is_valid == False:
-                raise GeometryError(explain_validity(geom))
-        return is_valid
+    def validate_geojson_geometry(self, geojson: dict) -> bool:
+        validity_report = geojson_validator.validate_geometries(geojson)
+        return validity_report
