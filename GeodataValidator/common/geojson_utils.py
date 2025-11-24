@@ -5,7 +5,7 @@ from shapely.geometry import shape
 from shapely.validation import explain_validity
 
 LOGGER = logging.getLogger(__name__)
-geojson_validator.configure_logging(enabled=False)
+#geojson_validator.configure_logging(enabled=False)
 
 class GeoJsonUtils:
 

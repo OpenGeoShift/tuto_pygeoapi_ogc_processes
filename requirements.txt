@@ -1,1 +1,1 @@
-geojson-validator
+geojson-validator==0.5.2
