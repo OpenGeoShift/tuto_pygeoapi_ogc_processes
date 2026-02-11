@@ -10,7 +10,7 @@ class GeoJsonUtils:
 
     def geojson_isvalid(self, geojson: dict) -> bool:
         try:
-            feature_collection = FeatureCollectionModel(**data)
+            feature_collection = FeatureCollectionModel(**geojson)
             return True
         except ValidationError as e:
             LOGGER.error(e)
