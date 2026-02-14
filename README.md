@@ -20,7 +20,6 @@ pip install git+https://github.com/OpenGeoShift/tuto_pygeoapi_ogc_processes
 python -m venv venv
 venv/Scripts/activate
 pip install pytest
-pip install shapely
 pip install -e .
 ```
 
