@@ -13,7 +13,7 @@ def validate_geojson_format(geojson: dict)->bool:
     Validate geojson structure
     """
     LOGGER.info('Validating GeoJSON Format...')
-    time.sleep(10)
+    time.sleep(30)
     return gjutils.geojson_isvalid(geojson)
 
 def validate_geojson_geometry(geojson: dict)->bool:
@@ -21,7 +21,7 @@ def validate_geojson_geometry(geojson: dict)->bool:
     Validate geojson geometry
     """
     LOGGER.info('Validating GeoJSON Geometry...')
-    time.sleep(10)
+    time.sleep(30)
     return gjutils.validate_geojson_geometry(geojson)
 
 if __name__ == "__main__":
